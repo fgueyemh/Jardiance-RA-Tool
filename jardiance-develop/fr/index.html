@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jardiance Risk Assessment Tool</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="scripts.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+	<div class="chat-pal">
+		<div id="cf-intro" class="cf-intro cf-question show">
+			<div class="heart-container no-pulse">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container show">
+				<p><strong>Le fait de connaître votre risque de maladie cardiaque est la première mesure à prendre pour protéger votre vie</strong></p>
+				<p>Les symptômes de la maladie cardiaque sont souvent silencieux. Les signes avant-coureurs ne sont pas toujours assez évidents pour vous aviser que vous devez apporter des changements. Notre outil d'évaluation du risque peut donc vous aider à évaluer votre propre risque de maladie cardiaque. </p>
+			</div>
+			<button id="intro" type="submit">Utilisez l'outil d'évaluation du risque dès maintenant</button>
+		</div>
+		<div></div>
+		<div id="cf-question0" class="cf-question hide" number="0">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p>Bonjour! Merci de prendre le temps aujourd'hui d'évaluer votre santé cardiaque.</p>
+				<p>Avant de commencer, vous devriez être au courant de certaines choses :</p>
+				<p><strong>Je ne suis pas un médecin.</strong> Je ne suis pas en mesure de vous donner des conseils de nature médicale, ni de composer le 911 en cas d'urgence. Mon rôle se limite à vous fournir des renseignements en fonction de vos réponses à des questions sur votre santé.</p>
+				<p><strong>La protection de vos renseignements personnels est importante.</strong> Aucun renseignement personnel communiqué dans le cadre de l'utilisation de l'outil d'évaluation du risque ne sera emmagasiné par la suite. <strong>Les renseignements que vous fournirez ne seront utilisés que pendant l'utilisation de l'outil.</strong></p>
+				<p>Quel est votre nom?</p>
+			</div>
+			<div class="buttons">
+				<input type="text" id="cf-name" placeholder="Veuillez entrer votre nom...">
+				<button class="questionAll" id="question0-enter" type="submit" answer="Bienvenue &name&. Allons-y avec l'évaluation. Il ne faudra que quelques minutes pour répondre aux questions."><label for="question0-enter">Entrer</label>
+				<button class="questionAll" id="question0-no" type="submit" answer="Aucun problème. Allons-y avec l'évaluation. Cela ne prendra que quelques minutes."><label for="question0-no">Vous préférez vous abstenir.</label>
+			</div>
+		</div>
+		<div id="cf-answer0" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question1" class="cf-question hide" number="1">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call"><span class="name"></span><span class="yes-name">, e</span><span class="no-name">E</span>st-ce que vous, ou un proche, êtes atteint de diabète de type 2?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" id="question1-yes" value="yes" score="1" answer="Merci de l'information. Les personnes atteintes de diabète de type 2 présentent souvent des complications autres que des problèmes de glycémie.&&Même si votre glycémie est dans les limites des valeurs cibles,  vous courez le risque de maladie cardiaque et d’accident vasculaire cérébral (AVC) étant donné que vous souffrez de diabète. Il est important que vous en discutiez avec votre médecin pour explorer les options offertes pour protéger votre cœur.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète.">
+				<label for="question1-yes">Oui</label>
+				<button type="radio" class="questionAll" id="question1-no" value="no" score="0" answer="Merci de l'information; le diabète de type 2 n'est pas simplement une question de contrôle du taux de sucre dans le sang : la prise en charge du diabète devrait également inclure la protection de votre santé cardiaque.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète.">
+				<label for="question1-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer1" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question2a" class="cf-question hide" number="2">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Avez-vous déjà éprouvé les symptômes suivants?</p>
+				<p>Douleur à la poitrine, sensation de serrement, de pression ou de malaise au niveau de la poitrine</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2-yes" value="yes" score="1" risk-factor="Douleur à la poitrine"><label for="question2-yes">Oui</label>
+				<button class="multipart" id="question2-maybe" value="maybe" score="1" risk-factor="Douleur à la poitrine"><label for="question2-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question2-no" value="no" score="0"><label for="question2-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2b" class="cf-question hide" number="3">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Essoufflement</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2b-yes" value="yes" score="1" risk-factor="Essoufflement"><label for="question2b-yes">Oui</label>
+				<button class="multipart" id="question2b-maybe" value="maybe" score="1" risk-factor="Essoufflement"><label for="question2b-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question2b-no" value="no" score="0"><label for="question2b-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2c" class="cf-question hide" number="4">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Sensation de douleur, d'engourdissement, de faiblesse ou de froid dans les jambes ou les bras</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2c-yes" value="yes" score="1" risk-factor="Sensation de douleur, d'engourdissement, de faiblesse ou de froid dans les jambes ou les bras"><label for="question2c-yes">Oui</label>
+				<button class="multipart" id="question2c-maybe" value="maybe" score="1" risk-factor="Sensation de douleur, d'engourdissement, de faiblesse ou de froid dans les jambes ou les bras"><label for="question2c-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question2c-no" value="no" score="0"><label for="question2c-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2d" class="cf-question hide" number="5">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Douleur au niveau du cou, de la mâchoire, de la gorge, dans le haut de l'abdomen ou dans le dos</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2d-yes" value="yes" score="1" risk-factor="Douleur au niveau du cou, de la mâchoire, de la gorge, dans le haut de l'abdomen ou dans le dos"><label for="question2d-yes">Oui</label>
+				<button class="multipart" id="question2d-maybe" value="maybe" score="1" risk-factor="Douleur au niveau du cou, de la mâchoire, de la gorge, dans le haut de l'abdomen ou dans le dos"><label for="question2d-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question2d-no" value="no" score="0"><label for="question2d-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2d" class="cf-question hide" number="6">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Enflure causée par l'accumulation de liquide dans les jambes et l'estomac</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart final" id="question2d-yes" value="yes" score="1" answer="C'est bon à savoir. Ces symptômes peuvent indiquer que quelque chose ne va pas.  Ces symptômes peuvent être des signes avant-coureurs de maladie cardiaque.&&Les personnes atteintes de diabète de type 2 sont plus susceptibles d'avoir une maladie cardiaque 10 à 15 ans plus tôt que les personnes non diabétiques." risk-factor="Enflure causée par l'accumulation de liquide dans les jambes et l'estomac"><label for="question2d-yes">Oui</label>
+				<button class="multipart final" id="question2d-maybe" value="maybe" score="1" answer="Ces symptômes peuvent être quelques-uns des signes avant-coureurs de maladie cardiaque. Le risque de maladie cardiaque est plus élevé chez les personnes atteintes de diabète de type 2; vous devriez peut-être en parler avec votre médecin pour savoir comment réduire ce risque." risk-factor="Enflure causée par l'accumulation de liquide dans les jambes et l'estomac"><label for="question2d-maybe">Peut-être/Incertain</label>
+				<button class="multipart final" id="question2d-no" value="no" score="0" answer="C'est donc une bonne nouvelle. Il est quand même important de savoir quels sont les signes avant-coureurs de maladie cardiaque et de mentionner à votre médecin si vous ressentez ces symptômes."><label for="question2d-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer2d" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question3a" class="cf-question hide" number="7">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Est-ce que vous ou un membre de votre famille avez déjà eu ce qui suit? Un événement médical, comme :</p>
+				<p>Un accident ischémique transitoire (AIT)</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3a-yes" value="yes" score="1" risk-factor="Un accident ischémique transitoire (AIT)"><label for="question3a-yes">Oui</label>
+				<button class="multipart" id="question3a-maybe" value="maybe" score="1" risk-factor="Un accident ischémique transitoire (AIT)"><label for="question3a-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question3a-no" value="no" score="0"><label for="question3a-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3b" class="cf-question hide" number="8">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Un mini-AVC</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3d-yes" value="yes" score="1" risk-factor="Un mini-AVC"><label for="question3b-yes">Oui</label>
+				<button class="multipart" id="question3d-maybe" value="maybe" score="1" risk-factor="Un mini-AVC"><label for="question3b-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question3d-no" value="no" score="0"><label for="question3b-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3c" class="cf-question hide" number="9">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Une crise cardiaque</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3c-yes" value="yes" score="1" risk-factor="Une crise cardiaque"><label for="question3c-yes">Oui</label>
+				<button class="multipart" id="question3c-maybe" value="maybe" score="1" risk-factor="Une crise cardiaque"><label for="question3c-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question3c-no" value="no" score="0"><label for="question3c-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3d" class="cf-question hide" number="10">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Insuffisance cardiaque</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3d-yes" value="yes" score="1" risk-factor="Insuffisance cardiaque"><label for="question3d-yes">Oui</label>
+				<button class="multipart" id="question3d-maybe" value="maybe" score="1" risk-factor="Insuffisance cardiaque"><label for="question3d-maybe">Peut-être/Incertain</label>
+				<button class="multipart" id="question3d-no" value="no" score="0"><label for="question3d-no">Non</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3e" class="cf-question hide" number="11">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">AVC</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart final" id="question3e-yes" value="yes" score="1" answer="Si vous avez déjà eu une crise cardiaque, votre risque d'en avoir un autre est d'autant plus élevé.Des antécédents familiaux de maladie cardiaque ou d'AVC peuvent également augmenter votre propre risque.&&Il est important de discuter avec votre médecin sur ce que vous pouvez faire pour réduire votre risque d'avoir un autre événement.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète." risk-factor="AVC"><label for="question3e-yes">Oui</label>
+				<button class="multipart final" id="question3e-maybe" value="maybe" score="1" answer="Si vous avez déjà eu une crise cardiaque, votre risque d'en avoir un autre est d'autant plus élevé.&&Il est important de discuter avec votre médecin sur ce que vous pouvez faire pour réduire votre risque d'avoir un autre événement.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète." risk-factor="AVC"><label for="question3e-maybe">Peut-être/Incertain</label>
+				<button class="multipart final" id="question3e-no" value="no" score="0" answer="Le fait que ni vous ni un membre de votre famille avez eu un de ces événements médicaux est une bonne nouvelle. Des antécédents familiaux de maladie cardiaque ou d'AVC peuvent également augmenter votre propre risque. &&Il est quand même important de savoir quels sont les signes avant-coureurs de maladie cardiaque et de mentionner à votre médecin si vous ressentez ces symptômes.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète."><label for="question3e-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer3e" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question4" class="cf-question question-generic hide" number="12">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Avez-vous parfois de la difficulté à maîtriser votre glycémie?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" id="question4-yes" value="yes" score="1" answer="Ce problème peut être très courant chez les personnes diabétiques. Une élévation de la glycémie peut causer des dommages étant donné que votre risque de complications, comme la maladie cardiaque, est plus élevé. Votre valeur cible du taux sanguin d'HbA1c devrait habituellement être de 7 pour cent ou moins. Cette mesure indique votre glycémie moyenne pour les 120 jours précédents." risk-factor="Glycémie non maîtrisée">
+				<label for="question4-yes">Oui</label>
+				<button type="radio" class="questionAll" id="question4-maybe" value="maybe" score="1" answer="Examinez votre glycémie avec votre médecin; une glycémie mal maîtrisée pourrait causer des problèmes." risk-factor="Glycémie non maîtrisée">
+				<label for="question4-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll" id="question4-no" value="no" score="0" answer="Bravo! Même si votre glycémie est bien maîtrisée, le fait d'être atteint de diabète peut augmenter votre risque d'autres complications pour la santé.">
+				<label for="question4-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer4" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question5" class="cf-question question-generic hide" number="13">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call"><span class="name"></span><span class="yes-name">, f</span><span class="no-name">F</span>aites-vous de l'hypertension?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Même si vous ne vous en rendez pas compte, l'hypertension peut augmenter votre risque de maladie cardiaque ou d'AVC.&&Idéalement, votre tension artérielle devrait être inférieure à 130/80 mmHg.&&Discutez avec votre médecin de votre tension artérielle et de votre risque de maladie cardiaque. Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète." risk-factor="Hypertension">
+				<label for="question5-yes">Oui</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="L'hypertension peut augmenter votre risque de maladie cardiaque; vous devriez en discuter avec votre médecin. &&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète." risk-factor="Hypertension">
+				<label for="question5-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Même si votre tension artérielle est bien maîtrisée, la maladie cardiaque peut toujours être un problème pour les personnes atteintes de diabète de type 2.&&Discutez avec votre médecin de votre tension artérielle et de votre risque de maladie cardiaque et d'AVC. Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète.">
+				<label for="question5-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer5" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question6" class="cf-question question-generic hide" number="14">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Avez-vous un taux élevé de cholestérol?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Étant donné l'absence de symptômes, on peut avoir l'impression qu'une élévation du taux de cholestérol est inoffensive, mais il s'agit d'un autre facteur de risque de problème de cœur et de maladie cardiaque.&&Idéalement, votre taux de cholestérol LDL (ou mauvais cholestérol) devrait être de 2,0 mmol/L ou moins."  risk-factor="Taux élevé de cholestérol">
+				<label for="question6-yes">Oui</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Il est important de connaître son taux de cholestérol puisqu'un taux élevé de cholestérol peut augmenter le risque de maladie cardiaque. &&Votre médecin peut effectuer un simple test sanguin pour mesurer votre taux de cholestérol; les résultats peuvent être obtenus après quelques jours."  risk-factor="Taux élevé de cholestérol">
+				<label for="question6-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Même si votre taux de cholestérol est sous contrôle, ce taux peut fluctuer et doit donc être surveillé. Un taux élevé de cholestérol peut augmenter votre risque de problème de cœur.">
+				<label for="question6-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer6" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question7" class="cf-question question-generic hide" number="15">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Faites-vous de l'embonpoint?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Perdre du poids et maintenir un poids santé sont des mesures importantes pour améliorer sa santé.&&Voici quelques conseils pour planifier des repas qui vous aideront à atteindre et à maintenir un poids santé...&&Consommez des collations et des repas sains.&&Vous devriez essayer de manger 3 repas par jour, à un intervalle ne dépassant pas 6 heures. Il vous sera ainsi plus facile de maîtriser votre glycémie.&&Demandez à votre médecin de vous conseiller sur les portions, notamment en ce qui a trait aux glucides (y compris le sucre et les fibres), et au sel.&&Notre liste de suggestions de questions à poser à votre médecin au sujet du diabète et de la santé cardiaque pourra également vous être utile.  Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a>." risk-factor="Embonpoint">
+				<label for="question7-yes">Oui</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Maintenir un poids santé peut être un moyen important pour améliorer sa santé.&&Consommez des collations et des repas sains.&&Vous devriez essayer de manger 3 repas par jour, à un intervalle ne dépassant pas 6 heures. Il vous sera ainsi plus facile de maîtriser votre glycémie.&&Demandez à votre médecin de vous conseiller sur les portions, notamment en ce qui a trait aux glucides (y compris le sucre et les fibres), et au sel.&&Notre liste de suggestions de questions à poser à votre médecin au sujet du diabète et de la santé cardiaque pourra également vous être utile.  Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a>." risk-factor="Embonpoint">
+				<label for="question7-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Excellente nouvelle! Continuons l'évaluation!&&Voici quelques conseils pour planifier des repas qui vous aideront à atteindre et à maintenir un poids santé...&&Consommez des collations et des repas sains.&&Vous devriez essayer de manger 3 repas par jour, à un intervalle ne dépassant pas 6 heures. Il vous sera ainsi plus facile de maîtriser votre glycémie.&&Demandez à votre médecin de vous conseiller sur les portions, notamment en ce qui a trait aux glucides (y compris le sucre et les fibres), et au sel.&&Notre liste de suggestions de questions à poser à votre médecin au sujet du diabète et de la santé cardiaque pourra également vous être utile.  Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a>.">
+				<label for="question7-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer7" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question8" class="cf-question question-generic hide" number="16">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Faites-vous de l'exercice régulièrement?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="0" answer="Excellente nouvelle! Il est important de rester actif pour préserver sa santé cardiaque.&&Voici quelques conseils pour vous aider à rester actif et protéger votre cœur :&&Les experts recommandent un minimum de 150 minutes d'activité aérobique par semaine, plus au moins deux séances d'exercice de résistance (pour améliorer la force et/ou l'endurance). &&Cela peut sembler beaucoup, mais même une marche rapide est considérée comme une activité aérobique, et le simple fait d'aller marcher pendant 10 minutes après un repas permet d'abaisser la glycémie; il existe également divers styles d'extension de bras (« push-up ») que vous pouvez facilement faire à la maison.">
+				<label for="question8-yes">Oui</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="L'exercice comporte de nombreux bienfaits pour votre bien-être général, y compris votre santé cardiaque et votre diabète.&&Voici quelques conseils pour vous aider à rester actif et protéger votre cœur :&&Les experts recommandent un minimum de 150 minutes d'activité aérobique par semaine, plus au moins deux séances d'exercice de résistance (pour améliorer la force et/ou l'endurance). &&Cela peut sembler beaucoup, mais même une marche rapide est considérée comme une activité aérobique, et le simple fait d'aller marcher pendant 10 minutes après un repas permet d'abaisser la glycémie; il existe également divers styles d'extension de bras (« push-up ») que vous pouvez facilement faire à la maison." risk-factor="Manque d'exercice">
+				<label for="question8-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll" value="no" score="1" answer="C'est vrai qu'il n'est pas toujours facile de prendre le temps de faire de l'exercice.&&Voici quelques conseils pour vous aider à rester actif et protéger votre cœur :&&Les experts recommandent un minimum de 150 minutes d'activité aérobique par semaine, plus au moins deux séances d'exercice de résistance (pour améliorer la force et/ou l'endurance). &&Cela peut sembler beaucoup, mais même une marche rapide est considérée comme une activité aérobique, et le simple fait d'aller marcher pendant 10 minutes après un repas permet d'abaisser la glycémie; il existe également divers styles d'extension de bras (« push-up ») que vous pouvez facilement faire à la maison." risk-factor="Manque d'exercice">
+				<label for="question8-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer8" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question9" class="cf-question question-generic hide" number="17">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Avez-vous déjà fumé régulièrement des cigarettes ou fumez-vous présentement?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Si vous êtes fumeur, le temps est venu de penser à arrêter.&&Arrêter de fumer peut être une des mesures les plus importantes que vous pourriez prendre pour empêcher le diabète et la détérioration de votre santé cardiaque. &&Le tabagisme représente un risque encore plus élevé pour les personnes diabétiques étant donné que les produits chimiques nocifs contenus dans la fumée de cigarette s'attaquent également aux vaisseaux sanguins.&&Une discussion avec votre médecin pourrait vous être utile. &&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète. " risk-factor="Fumeur ou ex-fumeur">
+				<label for="question9-yes">Oui</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Excellente nouvelle! Vous devriez demander à votre médecin de vous conseiller d'autres moyens qui pourraient vous aider à réduire votre risque de maladie cardiaque.&&Une discussion à ce sujet avec votre médecin pourrait être une bonne source de motivation.&&Cliquez <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>ici</a> pour obtenir une liste de suggestions de questions à poser à votre médecin au sujet de la santé cardiaque et du diabète.">
+				<label for="question9-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer9" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question10" class="cf-question question-generic hide" number="18">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Prenez-vous des médicaments pour prendre en charge votre diabète de type 2? Cela comprend les médicaments ou les traitements visant à maîtriser votre glycémie.</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll last" value="yes" score="0" answer="Le fait que vous prenez des médicaments pour aider à prendre en charge votre diabète est une excellente nouvelle.">
+				<label for="question10-yes">Oui</label>
+				<button type="radio" class="questionAll last" value="maybe" score="0" answer="Que vous preniez des médicaments ou non, il pourrait être utile de demander à votre médecin ce que vous pouvez faire pour réduire votre risque de maladie cardiaque.">
+				<label for="question10-maybe">Peut-être/Incertain</label>
+				<button type="radio" class="questionAll last" value="no" score="0" answer="Même si vous n'avez pas besoin de médicaments pour aider à prendre en charge votre diabète de type 2, vous pourriez demander à votre médecin ce que vous pouvez faire pour réduire votre risque de maladie cardiaque.">
+				<label for="question10-no">Non</label>
+			</div>
+		</div>
+		<div id="cf-answer10" class="cf-answer cf-question hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div class="cf-question cf-assess hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Merci<span class="yes-name"> </span><span class="name"></span>! Vous avez maintenant terminé l'évaluation du risque de maladie cardiaque.</p>
+				<p>Le lien entre le diabète de type 2 et la maladie cardiaque est bien réel.</p>
+				<p>On estime qu'une personne atteinte de diabète de type 2 sur deux mourra d'une maladie cardiaque.</p>
+				<p>La maladie cardiaque peut survenir 10 à 15 ans plus tôt chez les personnes diabétiques.</p>
+				<p>Veuillez donc considérer cette information et en profiter pour demander à votre médecin ce que vous pouvez faire pour mieux prendre soin de votre cœur.</p>
+			</div>
+		</div>
+		<div class="cf-result at-risk hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">D'après vos réponse, vous présentez <strong>un risque</strong> de maladie cardiaque.</p>
+				<p>Voici ce que vous pouvez faire...</p>
+				<p>Parlez-en à votre médecin. Avisez votre médecin que vous pensez être à risque de maladie cardiaque étant donné que vous présentez...</p>
+				<p>un diabète de type 2 AINSI QUE des signes ou des antécédents de maladie cardiaque.</p>
+				<p>PLUS les facteurs de risque suivants :</p>
+				<div class="risk-factors"></div>
+				<p>Enfin, voici une <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>liste de questions</a> que vous pourriez poser à votre médecin à votre prochaine consultation.</p>
+			</div>
+		</div>
+		<div class="cf-result not-at-risk hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">D'après vos réponses, vous ne présentez actuellement <strong>aucun risque</strong> de maladie cardiaque.</p>
+				<p>Voilà une excellente nouvelle. Minimisez votre risque en suivant les consignes suivantes :</p>
+				<p>Ne fumez pas</p>
+				<p>Surveillez votre poids</p>
+				<p>Adoptez une alimentation saine</p>
+				<p>Faites de l'exercice régulièrement</p>
+				<p>Prenez le temps de vous occuper de votre santé</p>
+				<p><strong>La prévention, d'abord et avant tout.</strong> Demandez à votre médecin si vous devriez faire un test de dépistage du diabète et ce que vous pouvez faire pour réduire votre risque. Voici une <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>liste de questions</a> que vous pourriez poser à votre médecin.</p>
+			</div>
+		</div>
+		<!-- <div class="dots hide">
+			<p><span>.</span><span>.</span><span>.</span></p>
+		</div> -->
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

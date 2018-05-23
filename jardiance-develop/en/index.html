@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jardiance Risk Assessment Tool</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="scripts.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+	<div class="chat-pal">
+		<div id="cf-intro" class="cf-intro cf-question show">
+			<div class="heart-container no-pulse">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container show">
+				<p><strong>Knowing Your Risk of Heart Disease Can Be the Beginning of Taking Life-Saving Action</strong></p>
+				<p>Heart disease symptoms can be silent. The warning signs don’t always provide enough notice to let you know you need to make some changes. That’s where our Risk Assessment Tool can help you assess your personal risk of heart disease.</p>
+			</div>
+			<button id="intro" type="submit">Use risk assessment tool now</button>
+		</div>
+		<div></div>
+		<div id="cf-question0" class="cf-question hide" number="0">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p>Hello! Thanks for taking time today to assess your heart health.</p>
+				<p>Before we get started, a few things that you should know:</p>
+				<p><strong>I am not a doctor.</strong> I cannot give you medical advice, nor can I call 911 in an emergency. I am here to provide information to you, based on your responses to questions about your health.</p>
+				<p><strong>Your privacy is important.</strong> No personal details that you share while using the Risk Assessment Tool will be stored after you complete this assessment. <strong>Any information you provide is only for use while you are using the Tool.</strong></p>
+				<p>What's your name?</p>
+			</div>
+			<div class="buttons">
+				<input type="text" id="cf-name" placeholder="Enter name...">
+				<button class="questionAll" id="question0-enter" type="submit" answer="Welcome &name&. Let’s start the assessment. This will only take a few minutes."><label for="question0-enter">Enter</label>
+				<button class="questionAll" id="question0-no" type="submit" answer="That’s completely fine. Let’s start the assessment. It won’t take very long."><label for="question0-no">I don't feel like sharing, thanks.</label>
+			</div>
+		</div>
+		<div id="cf-answer0" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question1" class="cf-question hide" number="1">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call"><span class="name"></span><span class="yes-name">, d</span><span class="no-name">D</span>o you, or does someone close to you, have type 2 diabetes?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" id="question1-yes" value="yes" score="1" answer="Thanks for sharing. People with type 2 diabetes often have complications beyond blood sugar levels.&&And even if your blood sugar levels are within target range, your diabetes still puts you at risk of heart disease and stroke. It’s important to talk to your doctor about this, and explore options to protect your heart.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes.">
+				<label for="question1-yes">Yes</label>
+				<button type="radio" class="questionAll" id="question1-no" value="no" score="0" answer="Thanks for sharing, because type 2 diabetes is about more than just managing blood sugar: managing diabetes should also include protecting your heart health.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes.">
+				<label for="question1-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer1" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question2a" class="cf-question hide" number="2">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Have you ever experienced any of the following?</p>
+				<p>Chest pain, chest tightness, chest pressure or chest discomfort</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2-yes" value="yes" score="1" risk-factor="Chest pain while exercising"><label for="question2-yes">Yes</label>
+				<button class="multipart" id="question2-maybe" value="maybe" score="1" risk-factor="Chest pain while exercising"><label for="question2-maybe">Not Sure</label>
+				<button class="multipart" id="question2-no" value="no" score="0"><label for="question2-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2b" class="cf-question hide" number="3">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Shortness of breath</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2b-yes" value="yes" score="1" risk-factor="Shortness of breath"><label for="question2b-yes">Yes</label>
+				<button class="multipart" id="question2b-maybe" value="maybe" score="1" risk-factor="Shortness of breath"><label for="question2b-maybe">Not Sure</label>
+				<button class="multipart" id="question2b-no" value="no" score="0"><label for="question2b-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2c" class="cf-question hide" number="4">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Pain, numbness, weakness or coldness in your legs or arms</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2c-yes" value="yes" score="1" risk-factor="Pain, numbness, weakness or coldness in your legs or arms"><label for="question2c-yes">Yes</label>
+				<button class="multipart" id="question2c-maybe" value="maybe" score="1" risk-factor="Pain, numbness, weakness or coldness in your legs or arms"><label for="question2c-maybe">Not Sure</label>
+				<button class="multipart" id="question2c-no" value="no" score="0"><label for="question2c-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2d" class="cf-question hide" number="5">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Pain in the neck, jaw, throat, upper abdomen or back</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question2d-yes" value="yes" score="1" risk-factor="Pain in the neck, jaw, throat, upper abdomen or back"><label for="question2d-yes">Yes</label>
+				<button class="multipart" id="question2d-maybe" value="maybe" score="1" risk-factor="Pain in the neck, jaw, throat, upper abdomen or back"><label for="question2d-maybe">Not Sure</label>
+				<button class="multipart" id="question2d-no" value="no" score="0"><label for="question2d-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question2d" class="cf-question hide" number="6">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Swelling of fluid build-up in legs and stomach</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart final" id="question2d-yes" value="yes" score="1" answer="I’m sorry to hear that. These types of experiences may be your body’s way of telling you that something isn’t right.  These symptoms could be early signs of heart disease.&&People with type 2 diabetes have a higher risk of developing heart disease 10-15 years earlier than people without diabetes." risk-factor="Swelling of fluid build-up in legs and stomach"><label for="question2d-yes">Yes</label>
+				<button class="multipart final" id="question2d-maybe" value="maybe" score="1" answer="These symptoms could be some of the early signs of heart disease. People with type 2 diabetes are at higher risk of developing heart disease; consider talking to your doctor to learn how to reduce your risk." risk-factor="Swelling of fluid build-up in legs and stomach"><label for="question2d-maybe">Not Sure</label>
+				<button class="multipart final" id="question2d-no" value="no" score="0" answer="I’m glad to hear you haven’t experienced these signs or symptoms of heart disease. Even so, it’s important to be aware of these warning signs of heart disease, and to talk to your doctor if you do experience them."><label for="question2d-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer2d" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question3a" class="cf-question hide" number="7">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Have you or a family member experienced any of the following? A medical event, such as the following:</p>
+				<p>Transitory ischemic attack (TIA)</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3a-yes" value="yes" score="1" risk-factor="Transitory ischemic attack (TIA)"><label for="question3a-yes">Yes</label>
+				<button class="multipart" id="question3a-maybe" value="maybe" score="1" risk-factor="Transitory ischemic attack (TIA)"><label for="question3a-maybe">Not Sure</label>
+				<button class="multipart" id="question3a-no" value="no" score="0"><label for="question3a-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3b" class="cf-question hide" number="8">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Mini-stroke</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3d-yes" value="yes" score="1" risk-factor="Mini-stroke"><label for="question3b-yes">Yes</label>
+				<button class="multipart" id="question3d-maybe" value="maybe" score="1" risk-factor="Mini-stroke"><label for="question3b-maybe">Not Sure</label>
+				<button class="multipart" id="question3d-no" value="no" score="0"><label for="question3b-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3c" class="cf-question hide" number="9">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Heart attack</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3c-yes" value="yes" score="1" risk-factor="Heart attack"><label for="question3c-yes">Yes</label>
+				<button class="multipart" id="question3c-maybe" value="maybe" score="1" risk-factor="Heart attack"><label for="question3c-maybe">Not Sure</label>
+				<button class="multipart" id="question3c-no" value="no" score="0"><label for="question3c-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3d" class="cf-question hide" number="10">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Heart failure</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart" id="question3d-yes" value="yes" score="1" risk-factor="Heart failure"><label for="question3d-yes">Yes</label>
+				<button class="multipart" id="question3d-maybe" value="maybe" score="1" risk-factor="Heart failure"><label for="question3d-maybe">Not Sure</label>
+				<button class="multipart" id="question3d-no" value="no" score="0"><label for="question3d-no">No</label>
+			</div>
+		</div>
+		<div></div>
+		<div id="cf-question3e" class="cf-question hide" number="11">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Stroke</p>
+			</div>
+			<div class="buttons">
+				<button class="multipart final" id="question3e-yes" value="yes" score="1" answer="If you’ve had a heart attack in the past, your chances of having another one are increased. Having a family history of heart disease or stroke can also increase your risk.&&It’s important to talk to your doctor about how you can reduce your risk of another event.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes." risk-factor="Stroke"><label for="question3e-yes">Yes</label>
+				<button class="multipart final" id="question3e-maybe" value="maybe" score="1" answer="If you’ve had a heart attack in the past, your chances of having another one are increased.&&It’s important to talk to your doctor about how you can reduce your risk of another event.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes." risk-factor="Stroke"><label for="question3e-maybe">Not Sure</label>
+				<button class="multipart final" id="question3e-no" value="no" score="0" answer="I’m glad to hear neither you or a family member has experienced any of these medical events. Having a family history of heart disease or stroke can increase your risk.&&Even so, it’s important to be aware of these warning signs of heart disease, and to talk to your doctor if you experience them.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes."><label for="question3e-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer3e" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question4" class="cf-question question-generic hide" number="12">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Do you have uncontrolled blood sugar levels?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" id="question4-yes" value="yes" score="1" answer="This can be quite common for people with diabetes. High blood sugar levels can be harmful, as they increase your risk of complications, like heart disease for example. Your A1C blood test target is usually 7 per cent or less. This is a measure of your average blood glucose level over the preceding 120 days." risk-factor="Uncontrolled blood sugar levels">
+				<label for="question4-yes">Yes</label>
+				<button type="radio" class="questionAll" id="question4-maybe" value="maybe" score="1" answer="Check your blood sugar levels with your doctor; uncontrolled blood sugar can be harmful." risk-factor="Uncontrolled blood sugar levels">
+				<label for="question4-maybe">Not sure</label>
+				<button type="radio" class="questionAll" id="question4-no" value="no" score="0" answer="That’s good! Even if your blood sugar levels are well controlled, your diabetes could be putting you at risk of other health complications.">
+				<label for="question4-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer4" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question5" class="cf-question question-generic hide" number="13">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call"><span class="name"></span><span class="yes-name">, d</span><span class="no-name">D</span>o you have high blood pressure?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Although you can’t feel it, having high blood pressure can put you at higher risk of having a heart attack or stroke.&&Ideally, your blood pressure should be less than 130/80 mmHg.&&Ask your doctor about blood pressure and your risk of heart disease. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes." risk-factor="High blood pressure">
+				<label for="question5-yes">Yes</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Having high blood pressure can put you at risk of heart disease; make sure you talk to your doctor.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes." risk-factor="High blood pressure">
+				<label for="question5-maybe">Not sure</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Even with blood pressure under control, heart disease can still be a problem among people with type 2 diabetes.&&Ask your doctor about blood pressure and your risk of heart disease and stroke. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes.">
+				<label for="question5-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer5" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question6" class="cf-question question-generic hide" number="14">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Do you have high cholesterol?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="As a silent condition, having high cholesterol could seem harmless, but it is another factor that can put you at risk of damaging your heart and developing heart disease.&&Ideally, your LDL (or “bad”) cholesterol should be 2.0 mmol/L or less."  risk-factor="High cholesterol">
+				<label for="question6-yes">Yes</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Knowing your cholesterol levels can be important, since high cholesterol can increase your risk of heart disease.&&Your cholesterol levels can be determined by a simple blood test your doctor can perform; you’ll know the results within a few days."  risk-factor="High cholesterol">
+				<label for="question6-maybe">Not sure</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="Even if your cholesterol levels are well controlled, this could fluctuate through your life so it’s important to keep an eye on it. High cholesterol levels can increase the risk of damage to your heart.">
+				<label for="question6-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer6" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question7" class="cf-question question-generic hide" number="15">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Are you overweight?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="Losing weight and keeping a healthy weight can be a big step towards better health.&&Here are a few basic meal planning tips that can help you achieve and maintain a healthy weight...&&Eat nutritious meals and snacks&&Aim for 3 meals a day, no more than 6 hours apart. This will help control your blood sugar levels.&&Talk to your doctor about portion sizes, especially when it comes to carbohydrates (which includes all sugars and fibre), and salt.&&You may also find our list of suggested questions to ask your doctor about diabetes and heart health helpful. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a>." risk-factor="Overweight">
+				<label for="question7-yes">Yes</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Being at a healthy weight can be a big step towards better health.&&Here are a few basic meal planning tips that can help you achieve and maintain a healthy weight...&&Eat nutritious meals and snacks&&Aim for 3 meals a day, no more than 6 hours apart. This will help control your blood sugar levels.&&Talk to your doctor about portion sizes, especially when it comes to carbohydrates (which includes all sugars and fibre), and salt.&&You may also find our list of suggested questions to ask your doctor about diabetes and heart health helpful. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a>." risk-factor="Overweight">
+				<label for="question7-maybe">Not sure</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="That’s great news! Let’s move along with the assessment!&&Here are a few basic meal planning tips that can help you achieve and maintain a healthy weight...&&Eat nutritious meals and snacks&&Aim for 3 meals a day, no more than 6 hours apart. This will help control your blood sugar levels.&&Talk to your doctor about portion sizes, especially when it comes to carbohydrates (which includes all sugars and fibre), and salt.&&You may also find our list of suggested questions to ask your doctor about diabetes and heart health helpful. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a>.">
+				<label for="question7-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer7" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question8" class="cf-question question-generic hide" number="16">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Do you exercise regularly?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="0" answer="That’s great news! Keeping active is so important for your heart health.&&Here are some tips that can help you stay active for your heart:&&Experts recommend aiming for at least 150 minutes of aerobic activity per week, plus at least two sessions of resistance exercise (to increase strength and / or endurance).&&This sounds like a lot, but brisk walking is considered an aerobic activity and even just walking for 10 minutes after finishing a meal has been shown to lower blood glucose levels, and there are many forms of pushups that can easily be done at home.">
+				<label for="question8-yes">Yes</label>
+				<button type="radio" class="questionAll" value="maybe" score="1" answer="Exercising provides so many benefits for your overall well-being, including your heart health and your diabetes.&&Here are some tips that can help you stay active for your heart:&&Experts recommend aiming for at least 150 minutes of aerobic activity per week, plus at least two sessions of resistance exercise (to increase strength and / or endurance).&&This sounds like a lot, but brisk walking is considered an aerobic activity and even just walking for 10 minutes after finishing a meal has been shown to lower blood glucose levels, and there are many forms of pushups that can easily be done at home." risk-factor="Irregular exercise">
+				<label for="question8-maybe">Not sure</label>
+				<button type="radio" class="questionAll" value="no" score="1" answer="It’s not always easy to find time to exercise, I know.&&Here are some tips that can help you stay active for your heart:&&Experts recommend aiming for at least 150 minutes of aerobic activity per week, plus at least two sessions of resistance exercise (to increase strength and / or endurance).&&This sounds like a lot, but brisk walking is considered an aerobic activity and even just walking for 10 minutes after finishing a meal has been shown to lower blood glucose levels, and there are many forms of pushups that can easily be done at home." risk-factor="Irregular exercise">
+				<label for="question8-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer8" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question9" class="cf-question question-generic hide" number="17">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">In the past, have you consistently smoked cigarettes or do you currently smoke?</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll" value="yes" score="1" answer="If you still smoke, it’s time to think about quitting.&&Quitting can be one of the most important things you do to prevent your diabetes and heart health from worsening.&&People with diabetes face an even greater risk from smoking as the poisonous chemicals in cigarette smoke attack blood vessels.&&A talk with your doctor can help. Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes. " risk-factor="Smoking">
+				<label for="question9-yes">Yes</label>
+				<button type="radio" class="questionAll" value="no" score="0" answer="That’s great news! Consider talking to your doctor about other ways that also help to lower your risk of heart disease.&&A talk with your doctor can help you get started.&&Click <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>here</a> if you’d like to see a list of suggested questions to ask your doctor about heart health and diabetes.">
+				<label for="question9-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer9" class="cf-answer hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div id="cf-question10" class="cf-question question-generic hide" number="18">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Do you take any medication to manage your type 2 diabetes? This can include medications or treatments that are used to control your blood sugar.</p>
+			</div>
+			<div class="buttons">
+				<button type="radio" class="questionAll last" value="yes" score="0" answer="It’s good to hear you are taking medication to help manage your diabetes.">
+				<label for="question10-yes">Yes</label>
+				<button type="radio" class="questionAll last" value="maybe" score="0" answer="Whether you are taking medication or not, it may be worthwhile to talk to your doctor about how to reduce your risk of heart disease.">
+				<label for="question10-maybe">Not sure</label>
+				<button type="radio" class="questionAll last" value="no" score="0" answer="Even if you do not need medications to help manage your type 2 diabetes, you may want to ask your doctor about how to reduce your risk of heart disease.">
+				<label for="question10-no">No</label>
+			</div>
+		</div>
+		<div id="cf-answer10" class="cf-answer cf-question hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container"></div>
+		</div>
+		<div class="cf-question cf-assess hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Thank you<span class="yes-name"> </span><span class="name"></span>! You’ve finished the heart disease Risk Assessment.</p>
+				<p>The link between type 2 diabetes and heart disease is real.</p>
+				<p>Approximately 1 in 2 people with type 2 diabetes will die of heart related illness.</p>
+				<p>Heart disease can start 10-15 years earlier in people with diabetes.</p>
+				<p>So keep this in mind and make sure you ask your doctor how you can best take care of your heart.</p>
+			</div>
+		</div>
+		<div class="cf-result at-risk hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Based on your answers, you are <strong>at-risk</strong> of heart disease.</p>
+				<p>Here is what you can do next...</p>
+				<p>Talk to your doctor. Let them know you think you may be at risk of heart disease because you have...</p>
+				<p>Type 2 diabetes PLUS signs of heart disease, or past heart related events.</p>
+				<p>PLUS these risk factors:</p>
+				<div class="risk-factors"></div>
+				<p>Finally, here is a <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>list of questions</a> that you may want to take with you to your next appointment.</p>
+			</div>
+		</div>
+		<div class="cf-result not-at-risk hide">
+			<div class="heart-container">
+				<div class="heart"></div>
+				<img src="heart-icon.svg" alt="">
+			</div>
+			<div class="text-container">
+				<p class="call">Based on your answers, you are currently <strong>not at risk</strong> of heart disease.</p>
+				<p>This is great news. Ensure your risk remains low, by being "SWEET":</p>
+				<p>Stay smoke-free</p>
+				<p>Watch your weight </p>
+				<p>Eat well </p>
+				<p>Exercise regularly </p>
+				<p>Take time to take care of your overall health</p>
+				<p><strong>Lastly...stay on top of things.</strong> Talk to your doctor about getting tested for diabetes and how you can further reduce your risk. Here's a <a href='http://www.myheartmatters.ca/diabetes-and-heart-disease/diabetes-questions-to-ask-your-doctor' target='_bank'>list of questions</a> that you may want to ask your doctor.</p>
+			</div>
+		</div>
+		<!-- <div class="dots hide">
+			<p><span>.</span><span>.</span><span>.</span></p>
+		</div> -->
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
